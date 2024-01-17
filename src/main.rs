@@ -17,8 +17,10 @@ struct Tile {
 }
 
 fn main() {
-    println!("RustSweeper");
-    println!("The board size is {SIZE}x{SIZE} with {CRAB_COUNT} crabs");
+    // cSpell:disable-next-line
+    println!(" |🦀| RUSTSWEEPER |🦀| ");
+    println!("The board size is {SIZE}x{SIZE} with {CRAB_COUNT} 🦀");
+    println!();
 
     let mut moves = 0;
 
@@ -154,7 +156,8 @@ fn render(&board: &[[Tile; 8]; 8]) {
                 let tile = board[x_index][y_index];
 
                 if tile.crab && tile.revealed {
-                    print!("C ")
+                    // crabs have no extra spaces because they take up to spaces in the monospace font
+                    print!("🦀")
                 } else if tile.revealed {
                     let c = tile.count;
                     print!("{c} ")
