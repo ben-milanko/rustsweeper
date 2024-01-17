@@ -1,35 +1,21 @@
 // RustSweeper
 //
 // A terminal Minesweeper game written in rust.
-
-// Default size of the game, the game will be SIZExSIZE
-use crate::board::Board;
-use crate::tile::Tile;
+use crate::board::{Board, BOARD_SIZE, CRAB_COUNT};
 use std::{io, process::exit};
 
 pub mod board;
 pub mod tile;
 
-const SIZE: u8 = 8;
-const CRAB_COUNT: u8 = 8;
-
 fn main() {
     // cSpell:disable-next-line
     println!(" |🦀| RUSTSWEEPER |🦀| ");
-    println!("The board size is {SIZE}x{SIZE} with {CRAB_COUNT} 🦀");
+    println!("The board size is {BOARD_SIZE}x{BOARD_SIZE} with {CRAB_COUNT} 🦀");
     println!();
 
     let mut moves = 0;
 
-    let empty_tile: Tile = Tile {
-        count: 0,
-        crab: false,
-        revealed: false,
-    };
-
-    let mut board: Board = Board {
-        tiles: [[empty_tile; 8]; 8],
-    };
+    let mut board: Board = Board::default();
 
     board.init();
     board.render();

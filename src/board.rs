@@ -2,12 +2,26 @@ use crate::tile::Tile;
 use rand::Rng;
 
 // const SIZE: u8 = 8;
-const CRAB_COUNT: u8 = 8;
+pub const CRAB_COUNT: u8 = 8;
 pub const BOARD_SIZE: usize = 8;
 
 #[derive(Copy, Clone, Debug)]
 pub struct Board {
     pub tiles: [[Tile; BOARD_SIZE]; BOARD_SIZE],
+}
+
+impl Default for Board {
+    fn default() -> Board {
+        let empty_tile: Tile = Tile {
+            count: 0,
+            crab: false,
+            revealed: false,
+        };
+
+        Board {
+            tiles: [[empty_tile; 8]; 8],
+        }
+    }
 }
 
 impl Board {
